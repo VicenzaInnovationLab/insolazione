@@ -42,14 +42,14 @@ var dark = L.tileLayer(mbUrl, {id: 'mapbox/dark-v9', tileSize: 512, zoomOffset: 
 
 var corner1 = L.latLng(45.4335, 11.4307),
     corner2 = L.latLng(45.6519, 11.6769),
-    bounds = L.latLngBounds(corner1, corner2);
+    bbox = L.latLngBounds(corner1, corner2);
 
 var map = L.map("map", {
     center: [45.548, 11.548], // Vicenza
     zoom: 14,
     minZoom: 13,
     maxZoom: 18,
-    maxBounds: bounds,
+    maxBounds: bbox,
     layers: [dark, vicenza, edifici]
 });
 
@@ -81,6 +81,23 @@ L.Control.Watermark = L.Control.extend({
     }
 });
 
+// Geosearch
+L.Control.geocoder({placeholder: 'Trova indirizzo...',
+                    geocoder: L.Control.Geocoder.nominatim({
+                        geocodingQueryParams: {
+                            countrycodes: "it",
+                            "accept-language": "it",
+                            viewbox: bbox.toBBoxString(),  // y1, x1, y2, x2
+                            bounded: 1
+                        }
+                    }),
+    position: "topleft",
+    collapsed: false,
+    expand: "hover"
+}).addTo(map);
+
 L.control.watermark = function(opts) {return new L.Control.Watermark(opts);}
 L.control.watermark({ position: "bottomright" }).addTo(map);
 L.control.scale().addTo(map);
+map.zoomControl.setPosition("topleft");
+

@@ -1,9 +1,8 @@
-html, body {
-    height: 100%;
+body {
+    padding: 0;
     margin: 0;
 }
-
-#map {
-    width: 100%;
-    height: 100%;
+html, body, #map {
+    height: 100%; /* percentage for height due to a bug with Google Chrome on mobile */
+    width: 100vw;
 }
