@@ -242,3 +242,7 @@ except Exception as e:
     raise SystemExit(1)
 
 log.critical("L'ESECUZIONE È FINITA CON SUCCESSO")
+
+# TODO automaticamente aggiornare la mappa web
+# TODO aggiornare README
+# TODO verificare venv
