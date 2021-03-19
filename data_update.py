@@ -9,6 +9,7 @@ import numpy as np
 import geopandas as gpd
 import pandas as pd
 import rasterio
+from rasterstats import zonal_stats
 
 from logger import custom_log
 import config as cfg
@@ -23,13 +24,20 @@ log.critical("L'ESECUZIONE INIZIA")
 
 def latest_file(folder: str, fpattern: str) -> str:
     """Ottiene l'ultimo JSON dalla cartella specificata"""
-    list_of_files = glob.glob(f"{folder}\{fpattern}")
+    list_of_files = glob.glob(f"{folder}\\{fpattern}")
     if len(list_of_files) > 0:
         last_file = max(list_of_files, key=os.path.getctime)
         return last_file
     else:
-        log.error(f"non c'è nessun file che corrisponde al pattern specificato: '{folder}\{fpattern}'")
+        log.error(f"non c'è nessun file che corrisponde al pattern specificato: '{folder}\\{fpattern}'")
         raise SystemExit(1)
+
+
+def get_zonal_stats(vector, raster, stats, nodata, affine_):
+    """Esegue le statistiche zonali e salva il risultato in Geopandas DataFrame"""
+    result = zonal_stats(vector, raster, nodata=nodata, stats=stats, affine=affine_, geojson_out=True)
+    geostats = gpd.GeoDataFrame.from_features(result, crs=vector.crs)
+    return geostats
 
 
 now_str = dt.now().strftime("%Y%m%d-%H%M%S")  # il marcatempo per aggiungere nei nomi di file
@@ -39,10 +47,10 @@ adm_list = {"Creazzo", "Altavilla Vicentina", "Sovizzo", "Torri di Quartesolo"}
 log.info(f"STEP 1. INTERROGAZIONE DEL GEOPORTALE REGIONALE")
 
 if cfg.SKIP_DOWNLOAD:  # Prendere l'ultimo JSON dalla cartella 'processing\download'
-    log.warn("download dal Geoportale è disattivato")
+    log.warning("download dal Geoportale è disattivato")
     wfs_file = latest_file("processing\download", "edifici_reg*.json")
     if Path(wfs_file).is_file():
-        log.info(f"è trovato '{wfs_file}'")
+        log.info(f"viene usato '{wfs_file}'")
     else:
         log.error(f"non c'è nessun JSON con gli edifici dal Geoportale: controlla la cartella 'download' e nomi di file")
         raise SystemExit(1)
@@ -84,8 +92,9 @@ try:
     adm = adm_prov[adm_prov["comune"].isin(adm_list)]
     log.info(f"sono estratti {len(adm)} poligoni dei comuni")
 
+    log.info("lettura del file dal Geoportale Regionale...")
     edif_reg = gpd.read_file(wfs_file).to_crs(7795)
-    log.info(f"sono letti {len(edif_reg)} edifici dallo '{wfs_file}'")
+    log.info(f"sono letti {len(edif_reg)} edifici dal Geoportale regionale")
 
     edif_vi = gpd.read_file(f"processing\edifici_sitvi_7795.zip")
     log.info(f"sono letti {len(edif_vi)} edifici SIT VI")
@@ -118,14 +127,12 @@ try:
     edifici_uniti = gpd.GeoDataFrame(
         pd.concat([edif_vi, edif_reg_filt], ignore_index=True),
         crs=edif_vi.crs)
-    edifici_uniti["area"] = edifici_uniti.area
     log.info(f"la trasformazione degli attributi di edifici è andata a buon fine ")
 except Exception as e:
     log.error(f"è impossibile trasformare gli attributi di edifici: {e}")
     raise SystemExit(1)
 
 # Salvare il risultato
-log.warn("raster con insolazione filtrato sarà sovrascritto")
 try:
     edifici_uniti_name = f"processing\output\edifici_uniti.json"
     edifici_uniti.to_file(edifici_uniti_name, driver="GeoJSON")
@@ -137,28 +144,26 @@ except Exception as e:
 
 log.info(f"STEP 3. PREPARAZIONE DATI RASTER")
 
+ins_file = latest_file("processing\output", "insolazione_filtrato.tif")
+
 if cfg.SKIP_RASTER:
-    log.warn("elaborazione del raster è disattivato")
-    ins_file = latest_file("processing\output", "insolazione_filtrato.tif")
+    log.warning("elaborazione del raster è disattivato")
     if Path(ins_file).is_file():
-        log.info(f"è trovato '{ins_file}'")
+        log.info(f"viene usato '{ins_file}'")
     else:
-        log.error(f"non c'è nessun RASTER dell'insolazione filtrato: controlla la cartella 'processing\output' e nomi di file")
+        log.error(f"non c'è nessun RASTER filtrato dell'insolazione: controlla la cartella 'processing\output' e nomi di file")
         raise SystemExit(1)
 else:
-    log.warn("raster con insolazione filtrato sarà sovrascritto")
+    log.warning("raster filtrato con insolazione sarà sovrascritto")
     try:
         # aprire i file raster in Read mode
         insol_ = rasterio.open(cfg.INSOLAZIONE)
+        affine = insol_.transform
         insol = insol_.read(1)
         pend = rasterio.open(cfg.PENDENZA).read(1)
         espos = rasterio.open(cfg.ESPOSIZIONE).read(1)
 
         log.info(f"i file raster sono letti")
-
-        # estrarre l'area di un pixel, in metri quadri
-        pixel_size_x, pixel_size_y = insol_.res
-        pixel_area = pixel_size_x * pixel_size_y
 
         log.info(f"eseguo Map Algebra - mascheratura di valori raster...")
         insol_f = np.where(
@@ -187,7 +192,7 @@ else:
                 count=1,
                 dtype=insol_f.dtype,
                 crs=insol_.crs,
-                transform=insol_.transform
+                transform=affine
         ) as dst:
             dst.write_band(1, insol_f)
     except Exception as e:
@@ -195,6 +200,45 @@ else:
         raise SystemExit(1)
 
 log.info(f"STEP 4. STATISTICHE ZONALI")
-# TODO: statistiche zonali
+
+try:
+    insol_f_ = rasterio.open(ins_file)
+    affine = insol_f_.transform
+    insol_f = insol_f_.read(1)
+
+    # estrarre l'area di un pixel, in metri quadri
+    pixel_size_x, pixel_size_y = insol_f_.res
+    pixel_area = pixel_size_x * pixel_size_y
+
+    log.info("calcolo delle statistiche...")
+
+    edifici_stats = get_zonal_stats(edifici_uniti, insol_f, ["count", "mean"], -9999, affine)
+
+    # creare un nuovo campo con l'area insolata, in metri quadri
+    edifici_stats["area_ins"] = edifici_stats["count"] * pixel_area
+
+    # selezionare solo edifici che superano il limite minimo dell'area insolata
+    edifici_stats = edifici_stats[edifici_stats["area_ins"] >= cfg.MIN_INS_AREA]
+
+    # creare un nuovo campo con l'energia annuale totale solo per le superficie utilizzabili, megawatt-ora annui
+    edifici_stats["sup_util_mwh"] = edifici_stats["count"] * edifici_stats["mean"] / 1000
+
+    # conversione della radiazione solare in energia producibile, megawatt-ora annui
+    edifici_stats["elett_prod_mwh"] = edifici_stats["sup_util_mwh"] * cfg.EFF * cfg.PR
+
+    log.info("le statistiche sono calcolate")
+
+except Exception as e:
+    log.error("è impossibile calcolare le statistiche zonali per gli edifici uniti")
+    raise SystemExit(1)
+
+try:
+    log.warning("edifici con le statistiche saranno sovrascritti")
+    edifici_stats_name = f"processing\output\edifici_stats.json"
+    edifici_stats.to_file(edifici_stats_name, driver="GeoJSON")
+    log.info(f"il risultato finale è salvato come '{edifici_stats_name}'")
+except Exception as e:
+    log.error(f"è impossibile salvare il risultato finale: {e}")
+    raise SystemExit(1)
 
 log.critical("L'ESECUZIONE È FINITA CON SUCCESSO")

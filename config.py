@@ -1,6 +1,7 @@
 # >INTERROGAZIONE DEL GEOPORTALE REGIONALE<
 
-SKIP_DOWNLOAD = False  # metti 'True' se gli edifici dal Geoportale sono già scaricati in 'processing/download'
+SKIP_DOWNLOAD = True  # metti 'True' se gli edifici dal Geoportale sono già scaricati in 'processing/download'
+
 ENDPOINT_REG = "http://idt2-geoserver.regione.veneto.it:80/geoserver/wfs"
 EDIFLAYER = "edifici_veneto_6876"
 SRSNAME ="EPSG:6876"
@@ -9,16 +10,21 @@ BBOX = f"2952786, 5036043, 2974090, 5055053, {SRSNAME}"  # copre tutti e cinque 
 
 # >RASTER<
 
-SKIP_RASTER = False  # metti 'True' se non vuoi eseguire lo calcolo su dati raster (lo step 3)
+SKIP_RASTER = True  # metti 'True' se non vuoi eseguire lo calcolo su dati raster (lo step 3)
 
 INSOLAZIONE = r"C:\Users\yvasy\PycharmProjects\insolazione\processing\insolazione.tif"
-MIN_INS = 800  # in kW*h/m2; saranno eliminati tutti i valori minori
+MIN_INS = 800  # in kW*h/m2 annui; saranno eliminati tutti i valori minori
 
 ESPOSIZIONE = r"C:\Users\yvasy\PycharmProjects\insolazione\processing\esposizione.tif"
 MIN_ESP, MAX_ESP = 22.5, 337.5  # in gradi; saranno eliminati tutti i valori fuori da questo range
 
 PENDENZA = r"C:\Users\yvasy\PycharmProjects\insolazione\processing\pendenza.tif"
 MAX_PEND = 45  # in gradi; saranno eliminati tutti i valori maggiori
+
+MIN_INS_AREA = 30  # in m2; min area di superficie adatta per l'installazione di pannelli solari
+
+EFF = 0.15  # efficienza del pannello che è in grado di convertire solo una parte dell'energia solare in entrata
+PR = 0.86  # performance ratio: la parte dell'elettricità che viene mantenuta nell'installazione
 
 # LOGGING
 

@@ -1,0 +1,5 @@
+
+      [rasterio.rio_plugins]
+      zonalstats=rasterstats.cli:zonalstats
+      pointquery=rasterstats.cli:pointquery
+    

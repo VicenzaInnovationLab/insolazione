@@ -13,6 +13,7 @@ Lo script `data_update.py` prepara un geojson con edifici per i comuni di Vicenz
     pip install dependencies\geopandas-0.9.0-py3-none-any.whl
     pip install rtree
     pip install dependencies\rasterio-1.2.1-cp37-cp37m-win_amd64.whl
+    pip install rasterstats-0.15.0
 
 ## Requisiti preliminari
 
