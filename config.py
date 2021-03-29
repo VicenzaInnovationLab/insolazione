@@ -1,6 +1,6 @@
 # >INTERROGAZIONE DEL GEOPORTALE REGIONALE<
 
-SKIP_DOWNLOAD = True  # metti 'True' se gli edifici dal Geoportale sono già scaricati in 'processing/download'
+SKIP_DOWNLOAD = False  # metti 'True' se gli edifici dal Geoportale sono già scaricati in 'processing/download'
 
 ENDPOINT_REG = "http://idt2-geoserver.regione.veneto.it:80/geoserver/wfs"
 EDIFLAYER = "edifici_veneto_6876"
@@ -10,7 +10,7 @@ BBOX = f"2952786, 5036043, 2974090, 5055053, {SRSNAME}"  # copre tutti e cinque 
 
 # >RASTER<
 
-SKIP_RASTER = True  # metti 'True' se non vuoi eseguire lo calcolo su dati raster (lo step 3)
+SKIP_RASTER = False  # metti 'True' se non vuoi eseguire lo calcolo su dati raster (lo step 3)
 
 INSOLAZIONE = r"C:\Users\yvasy\PycharmProjects\insolazione\processing\insolazione.tif"
 MIN_INS = 800  # in kW*h/m2 annui; saranno eliminati tutti i valori minori

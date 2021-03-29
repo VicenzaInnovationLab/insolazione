@@ -144,10 +144,9 @@ except Exception as e:
 
 log.info(f"STEP 3. PREPARAZIONE DATI RASTER")
 
-ins_file = latest_file("processing\output", "insolazione_filtrato.tif")
-
 if cfg.SKIP_RASTER:
     log.warning("elaborazione del raster è disattivato")
+    ins_file = latest_file("processing\output", "insolazione_filtrato.tif")
     if Path(ins_file).is_file():
         log.info(f"viene usato '{ins_file}'")
     else:
@@ -195,6 +194,7 @@ else:
                 transform=affine
         ) as dst:
             dst.write_band(1, insol_f)
+        ins_file = latest_file("processing\output", "insolazione_filtrato.tif")
     except Exception as e:
         log.error(f"è impossibile salvare il raster elaborato: {e}")
         raise SystemExit(1)
