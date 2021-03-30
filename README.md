@@ -48,17 +48,17 @@ Il repositorio consiste da due distinte parti. La prima è la web app (HTML, CSS
    
 2. Bisogna installare le seguenti librerie in ordine. Puoi usare la cartella ` processing/depenencies` che contiene i file necessari (Python wheels) compatibili con la versione specifica del Python e architettura dell'OS: in questo caso è Windows x64, Python 3.7 o Python 3.8. ALtrimenti [scarica i wheel da qua](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
-
-    pip install dependencies\GDAL-3.2.2-cp39-cp39-win_amd64.whl
-    pip install dependencies\pyproj-3.0.1-cp39-cp39-win_amd64.whl
-    pip install dependencies\Fiona-1.8.18-cp39-cp39-win_amd64.whl
-    pip install dependencies\Shapely-1.7.1-cp39-cp39-win_amd64.whl
-    pip install dependencies\geopandas-0.9.0-py3-none-any.whl
-    pip install dependencies\Rtree-0.9.7-cp39-cp39-win_amd64.whl
-    pip install dependencies\rasterio-1.2.1-cp39-cp39-win_amd64.whl
+```
+pip install dependencies\GDAL-3.2.2-cp39-cp39-win_amd64.whl
+pip install dependencies\pyproj-3.0.1-cp39-cp39-win_amd64.whl
+pip install dependencies\Fiona-1.8.18-cp39-cp39-win_amd64.whl
+pip install dependencies\Shapely-1.7.1-cp39-cp39-win_amd64.whl
+pip install dependencies\geopandas-0.9.0-py3-none-any.whl
+pip install dependencies\Rtree-0.9.7-cp39-cp39-win_amd64.whl
+pip install dependencies\rasterio-1.2.1-cp39-cp39-win_amd64.whl
    
-    pip install rasterstats
-
+pip install rasterstats
+```
 L'ultima libreria viene installata dall'internet, dunque non specifichiamo nessun file.
 
 ### Aggiustamenti manuali
@@ -135,7 +135,7 @@ In caso se vuoi cambiare i parametri della elaborazione, basta riavviare lo scri
 
 ## Credits
 
-Sviluppato nel Digital Innovation Hub Vicenza con il supporto del comune di Vicenza.
+Sviluppato nel [Digital Innovation Hub Vicenza](https://digitalinnovationhubvicenza.it/) con il supporto del comune di Vicenza e la Regione del Veneto.
 
 ## Licenza
 
