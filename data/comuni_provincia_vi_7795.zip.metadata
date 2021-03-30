@@ -1,0 +1,9 @@
+Limiti amministrativi della Provincia di Vicenza
+
+SR:	EPSG:7795 - RDN2008 / Zone 12 (E-N) - Proiettato
+Formato di Dato: Shapefile
+Licenza: La IODL 2.0 (Italian Open Data License)
+
+Riproiettato utilizzando i grigliati NTv2 forniti da Regione Veneto per effettuare le trasformazioni tra CRS (Coordinate Reference System). Importando i dati su un software GIS è necessario verificare l'interpretazione corretta del CRS di output ed eventualmente forzare il CRS tramite il codice EPSG corrispondente.
+
+Il dataset è stato fornito dal comune di Vicenza.

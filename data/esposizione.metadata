@@ -1,0 +1,11 @@
+Pendenza, in gradi
+
+Rappresenta i punti cardinali, come Nord, Nord-est, ecc.)
+Elaborazione di Digital Innovation Hub Vicenza su dati del Ministero dell'Ambiente e della Tutela del Territorio e del Mare - Geoportale nazionale (MATTM).
+
+SR:	EPSG:7795 - RDN2008 / Zone 12 (E-N) - Proiettato
+Tipo di Dato: Float32 - numero in virgola mobile di 32 bit
+Dimensione Pixel: 0.9749 metri
+Licenza: Creative Commons Attribuzione - Condividi allo stesso modo 3.0 Italia
+
+Creato dal modello della superficie DSM, derivato dalle riprese aeree Lidar.
