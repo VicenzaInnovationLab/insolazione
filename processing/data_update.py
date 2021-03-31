@@ -234,14 +234,19 @@ except Exception as e:
 
 try:
     log.warning("edifici con le statistiche saranno sovrascritti")
-    edifici_stats_name = f"..\webmap\layers\edifici_test.js"
-    edifici_stats.to_file(edifici_stats_name, driver="GeoJSON")
-    with open(edifici_stats_name, "r+") as f:
+    edifici_stats_name_json = f"..\data\output\edifici_stats.json"
+    edifici_stats.to_file(edifici_stats_name_json, driver="GeoJSON")
+    log.info(f"il risultato finale è salvato come '{edifici_stats_name_json}'")
+
+    edifici_stats_name_js = f"..\webmap\layers\edifici.js"
+    edifici_stats.to_file(edifici_stats_name_js, driver="GeoJSON")
+    with open(edifici_stats_name_js, "r+") as f:
         content = f.read()
         f.seek(0, 0)
         f.write("var edifici = " + content + ";")
+    log.info(f"il file '{edifici_stats_name_js}' della mappa web è aggiornato")
 
-    log.info(f"il risultato finale è salvato come '{edifici_stats_name}'")
+
 except Exception as e:
     log.error(f"è impossibile salvare il risultato finale: {e}")
     raise SystemExit(1)
