@@ -57,7 +57,7 @@ pip install processing\dependencies\geopandas-0.9.0-py3-none-any.whl
 pip install processing\dependencies\Rtree-0.9.7-cp39-cp39-win_amd64.whl
 pip install processing\dependencies\rasterio-1.2.1-cp39-cp39-win_amd64.whl
    
-pip install rasterstats
+pip install requests rasterstats
 ```
 L'ultima libreria viene installata dall'internet, dunque non specifichiamo nessun file.
 
