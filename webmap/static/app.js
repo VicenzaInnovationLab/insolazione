@@ -1,7 +1,7 @@
 // LAYER LOCALI
 var edifici_vi = L.geoJSON(edifici,
     {style: stileEdifici, onEachFeature: onEachFeature,
-    attribution: "Elaborazione Digital Surface Model MATTM - Geoportale nazionale &copy; " +
+    attribution: "Elaborazione del modello digitale di elevazione MATTM - Geoportale nazionale &copy; " +
         "<a href=\"https://digitalinnovationhubvicenza.it\">Digital Innovation Hub Vicenza</a>"});
 
 var comuni_vi = L.geoJSON(comuni,
@@ -61,7 +61,7 @@ L.Control.Watermark = L.Control.extend({
 });
 
 // Geosearch
-L.Control.geocoder({placeholder: 'Trova indirizzo...',
+L.Control.geocoder({placeholder: "Trova indirizzo...",
                     geocoder: L.Control.Geocoder.nominatim({
                         geocodingQueryParams: {
                             countrycodes: "it",
@@ -121,13 +121,13 @@ function highlightFeature(e) {
     }
     info.update(layer.feature.properties);
 }
-// Defineremo cosa succede su Mouseout:
+// Definiremo cosa succede su Mouseout:
 function resetHighlight(e) {
     edifici_vi.resetStyle(e.target);
     info.update();
 }
 
-// Definiamo un listener di click che ingrandisce l'edificio
+// Definiamo un Listener di click che ingrandisce l'edificio
 function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
@@ -170,7 +170,7 @@ legend.onAdd = function (map) {
         label = [];
 
     div.innerHTML = "<h4>MW·h annui</h4>"
-    // Loop attraverso i nostri intervalli di elett_prod_mwh e genera un'etichetta con un quadrato colorato per ogni intervallo
+    // Loop attraverso i nostri intervalli di 'elett_prod_mwh' e genera un'etichetta con un quadrato colorato per ogni intervallo
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +

@@ -1,4 +1,4 @@
-# >INTERROGAZIONE DEL GEOPORTALE REGIONALE<
+# || INTERROGAZIONE DEL GEOPORTALE REGIONALE
 
 SKIP_DOWNLOAD = False  # metti 'True' se gli edifici dal Geoportale sono già scaricati in 'processing/download'
 
@@ -8,7 +8,7 @@ SRSNAME ="EPSG:6876"
 BBOX = f"2952786, 5036043, 2974090, 5055053, {SRSNAME}"  # copre tutti e cinque comuni del progetto
 
 
-# >RASTER<
+# || RASTER
 
 SKIP_RASTER = False  # metti 'True' se non vuoi eseguire lo calcolo su dati raster (lo step 3)
 
@@ -26,7 +26,7 @@ MIN_INS_AREA = 30  # in m2; min area di superficie adatta per l'installazione di
 EFF = 0.15  # efficienza del pannello che è in grado di convertire solo una parte dell'energia solare in entrata
 PR = 0.86  # performance ratio: la parte dell'elettricità che viene mantenuta nell'installazione
 
-# LOGGING
+# || LOGGING
 
 # Dimensione massima di un logfile in megabyte
 LOG_SIZE = 1
