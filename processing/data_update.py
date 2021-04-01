@@ -15,7 +15,7 @@ from logger import custom_log
 import config as cfg
 
 
-# >IMPOSTAZIONI INIZIALI<
+# || IMPOSTAZIONI INIZIALI
 
 # Attivare logging
 log = custom_log(__file__)
@@ -43,6 +43,7 @@ def get_zonal_stats(vector, raster, stats, nodata, affine_):
 now_str = dt.now().strftime("%Y%m%d-%H%M%S")  # il marcatempo per aggiungere nei nomi di file
 adm_list = {"Creazzo", "Altavilla Vicentina", "Sovizzo", "Torri di Quartesolo"}
 
+# || ELABORAZIONE DATI
 
 log.info(f"STEP 1. INTERROGAZIONE DEL GEOPORTALE REGIONALE")
 
@@ -239,7 +240,7 @@ try:
     log.info(f"il risultato finale è salvato come '{edifici_stats_name_json}'")
 
     edifici_stats_name_js = f"..\webmap\layers\edifici.js"
-    edifici_stats.to_file(edifici_stats_name_js, driver="GeoJSON")
+    edifici_stats.to_crs({'init': 'epsg:4326'}).to_file(edifici_stats_name_js, driver="GeoJSON")
     with open(edifici_stats_name_js, "r+") as f:
         content = f.read()
         f.seek(0, 0)
