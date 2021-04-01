@@ -151,7 +151,7 @@ La IODL 2.0 (Italian Open Data License) prevede che l’utente possa liberamente
 In cambio, all’utente è chiesto solo d'indicare la fonte delle informazioni e il nome del soggetto che fornisce il dato, includendo, se possibile, un link alla licenza.
 Rispetto alla IODL 1.0, la Italian Open Data Licence 2.0 non prevede l’obbligo dell’utente di pubblicare e condividere gli eventuali lavori derivati (ad esempio, applicazioni) con la stessa licenza o con altra licenza aperta, ritenuta compatibile. 
 
-Vedi il file [LICENCE.md](LICENSE.md) per dettagli.
+Vedi il file [LICENSE.md](LICENSE.md) per dettagli.
 
 ### Dati sull'insolazione e terreno
 Questi file devi scaricare manualmente - vedi la sezione [Installazione - Aggiustamenti manuali](#aggiustamenti-manuali).
