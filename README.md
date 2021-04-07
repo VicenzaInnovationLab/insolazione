@@ -110,7 +110,7 @@ Per la seguente filtrazione è stato necessario di creare le mappe di pendenza (
 
 ### Web App
 
-La mappa interattiva è fatta con [OpenLayers](https://openlayers.org/). Puoi semplicemente avviare `webmap/map.html` per vedere la mappa. Per renderla disponibile in internet bisogna copiare l'intera cartella `webmap` nel tuo web server. Non richiede nessun requisito speciale - è semplice HTML, CSS e JavaScript.
+La mappa interattiva è fatta con ~~[OpenLayers](https://openlayers.org/)~~ [Leaflet](https://leafletjs.com/). Puoi semplicemente avviare `webmap/map.html` per vedere la mappa. Per renderla disponibile in internet bisogna copiare l'intera cartella `webmap` nel tuo web server. Non richiede nessun requisito speciale - è semplice HTML, CSS e JavaScript.
 
 ## Script dell'aggiornamento
 
