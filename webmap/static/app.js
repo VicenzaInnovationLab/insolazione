@@ -187,7 +187,7 @@ L.control.layers(baseLayers, overlays, options={position: "bottomright"}).addTo(
 // About
 
 L.easyButton("fa-info", function() {
-    alert("Il progetto è finanziato con un contributo di 697.427,64 euro dal Programma Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto,  nell'ambito del bando dell'azione 231 volto alla \"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data.\"" +
+    alert("Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla \"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data\"." +
         "\n\n" +
         "La web app è sviluppata dal Digital Innovation Hub di Confartigianato Vicenza (digitalinnovationhubvicenza.it)." +
         "\n\n" +
