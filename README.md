@@ -1,16 +1,14 @@
 # Generazione di elettricità da fotovoltaico su tetti di Vicenza e i comuni contermini
 
-> [Link alla Web App](https://dih-map-insolazione-vi.s3.eu-south-1.amazonaws.com/map.html)
+La radiazione solare entrante (insolazione) ricevuta dal sole è la principale fonte di energia che guida molti dei processi fisici e biologici della terra. Questa mappa interattiva dimostra quanta energia elettrica può essere prodotta dagli edifici a **Vicenza**, **Altavilla Vicentina**, **Creazzo**, **Sovizzo** e **Torri di Quartesolo (VI)** in un anno, se i pannelli solari sono installati su loro tetti. [Link alla Web App](https://dih-map-insolazione-vi.s3.eu-south-1.amazonaws.com/map.html)
 
-La radiazione solare entrante (insolazione) ricevuta dal sole è la principale fonte di energia che guida molti dei processi fisici e biologici della terra.
+> Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
 
-La mappa interattiva dimostra quanta energia elettrica può essere prodotta dagli edifici a **Vicenza**, **Altavilla Vicentina**, **Creazzo**, **Sovizzo** e **Torri di Quartesolo (VI)** in un anno, se i pannelli solari sono installati su loro tetti. È basata sulla stima della quantità totale d'insolazione entrante (diretta e diffusa) calcolata per ogni punto del modello di superficie digitale (DSM) ad alta risoluzione.
+![license logo](docs/logos.png)
 
-DSM rappresenta la topografia che è un fattore importante che determina la variabilità spaziale dell'insolazione. La variazione di elevazione, orientamento (pendenza e aspetto) e ombre proiettate da elementi topografici influiscono sulla quantità d'insolazione ricevuta in luoghi diversi. Questa variabilità cambia anche con l'ora del giorno e il periodo dell'anno e a sua volta contribuisce alla variabilità del microclima inclusi fattori come i regimi di temperatura dell'aria e del suolo, l'evapotraspirazione, i modelli di scioglimento della neve, l'umidità del suolo e la luce disponibile per la fotosintesi.
+La Web App è basata sulla stima della quantità totale d'insolazione entrante (diretta e diffusa) calcolata per ogni punto del modello di superficie digitale (DSM) ad alta risoluzione.DSM rappresenta la topografia che è un fattore importante che determina la variabilità spaziale dell'insolazione. La variazione di elevazione, orientamento (pendenza e aspetto) e ombre proiettate da elementi topografici influiscono sulla quantità d'insolazione ricevuta in luoghi diversi. Questa variabilità cambia anche con l'ora del giorno e il periodo dell'anno e a sua volta contribuisce alla variabilità del microclima inclusi fattori come i regimi di temperatura dell'aria e del suolo, l'evapotraspirazione, i modelli di scioglimento della neve, l'umidità del suolo e la luce disponibile per la fotosintesi.
 
 ![app screenshot](docs/app-screenshot.png)
-
-Il progetto è finanziato con un contributo di 697.427,64 euro dal Programma Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla *"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."*
 
 ## Indice
 
