@@ -38,9 +38,9 @@ La Web App è basata sulla stima della quantità totale d'insolazione entrante (
 
 ### Python
 
-Abbiamo usato Windows per questo sviluppo, quindi l'istruzione è valida per questo sistema. Però dovrebbe funzionare anche su Linux e Mac.
+Abbiamo usato Windows per questo sviluppo, quindi l'istruzione è valida per questo sistema. Però funziona anche su Linux e Mac.
 
-Il repositorio consiste da due distinte parti. La prima è la web app (HTML, CSS e JS). La seconda è lo script in Python per aggiornarla. Abbiamo testato questo con Python 3.9.2, ma le versioni non inferiori a 3.6 dovrebbero funzionare.
+Il repositorio consiste da due distinte parti. La prima è la web app (HTML, CSS e JS). La seconda è lo script in Python per aggiornarla. Abbiamo testato questo con Python 3.9.2, ma funzionano anche le versioni non inferiori a 3.6.
 
 1. Prima di tutto installa **Microsoft Visual C++** 14.0 (o maggiore). Scaricalo con lo strumento ["Microsoft C++ Build Tools"](https://visualstudio.microsoft.com/visual-cpp-build-tools/). 
    
