@@ -133,7 +133,7 @@ In caso se vuoi cambiare i parametri della elaborazione, basta riavviare lo scri
 
 ## Credits
 
-Sviluppato nel [Digital Innovation Hub Vicenza](https://digitalinnovationhubvicenza.it/) con il supporto del comune di Vicenza e la Regione del Veneto.
+Sviluppato dal InnovationLab Vicenza attraverso il [Digital Innovation Hub Vicenza](https://digitalinnovationhubvicenza.it/).
 
 ## Licenza
 
