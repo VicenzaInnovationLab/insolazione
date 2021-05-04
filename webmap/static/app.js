@@ -236,11 +236,12 @@ legend.addTo(map);
 L.control.layers(baseLayers, overlays, options = {position: "bottomright"}).addTo(map);
 
 // About
-var aboutText = "<p>Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale " +
-  "(POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla " +
-  "\"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network " +
-  "Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data\".</p>" +
-  "<p><a href='https://github.com/dihvicenza/insolazione'>Più informazioni</a></p>"
+var aboutText =
+  `<p>Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale 
+  (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla 
+  \"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network 
+  Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data\".</p>
+  <p><a href='https://github.com/dihvicenza/insolazione'>Più informazioni</a></p>`
 
 
 var showAbout = function () {
@@ -250,10 +251,11 @@ var showAbout = function () {
     imageUrl: "static/images/logo.png",
     imageWidth: 800,
     imageAlt: "Logo InnovationLab Vicenza",
-    footer: "<p>La web app è sviluppata dal <a href='https://digitalinnovationhubvicenza.it/'>" +
-      "Digital Innovation Hub</a> di Confartigianato Vicenza.</p>" +
-      "<p>Il favicon del sito è creato da <a href='www.freepik.com'>Freepik</a> " +
-      "dal www.flaticon.com.</p>"
+    footer:
+      `<p>La web app è sviluppata dal <a href='https://digitalinnovationhubvicenza.it/'> 
+      Digital Innovation Hub</a> di Confartigianato Vicenza.</p> 
+      <p>Il favicon del sito è creato da <a href='www.freepik.com'>Freepik</a> 
+      dal www.flaticon.com.</p>`
   });
 }
 
