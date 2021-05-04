@@ -44,12 +44,12 @@ var overlays = {
     "Comuni": comuni_vi
 };
 
-
+/*
 L.Control.Watermark = L.Control.extend({
     onAdd: function(map) {
         var img = L.DomUtil.create("img");
 
-        img.src = "static/images/logo.png";
+        img.src = "static/images/logo";
         img.style.width = "300px";
 
         return img;
@@ -59,7 +59,7 @@ L.Control.Watermark = L.Control.extend({
         // Nothing to do here
     }
 });
-
+*/
 // Geosearch
 L.Control.geocoder({placeholder: "Trova indirizzo...",
                     geocoder: L.Control.Geocoder.nominatim({
@@ -75,9 +75,9 @@ L.Control.geocoder({placeholder: "Trova indirizzo...",
     expand: "hover"
 }).addTo(map);
 
-L.control.watermark = function(opts) {return new L.Control.Watermark(opts);}
-L.control.watermark({ position: "bottomleft" }).addTo(map);
-//L.control.scale().addTo(map);
+// L.control.watermark = function(opts) {return new L.Control.Watermark(opts);}
+// L.control.watermark({ position: "bottomleft" }).addTo(map);
+// L.control.scale({ position: "bottomleft" }).addTo(map);
 map.zoomControl.setPosition("topleft");
 
 // STILE INTERATTIVO PER GLI EDIFICI
