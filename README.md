@@ -154,8 +154,8 @@ Vedi il file [LICENSE.md](LICENSE.md) per dettagli.
 ### Dati sull'insolazione e terreno
 Questi file devi scaricare manualmente - vedi la sezione [Installazione - Aggiustamenti manuali](#aggiustamenti-manuali).
 
-- `data/esposizione.tif`
-- `data/insolazione.tif`
-- `data/pendenza.tif`
+- `data/esposizione.tif` - esposizione dal DSM, in gradi (0-360, valore -9999 per aree piatte)
+- `data/insolazione.tif` - raster dell'insolazione (kWh/m<sup>2</sup>) (valore NoData -9999)
+- `data/pendenza.tif` - pendenza dal DSM, in gradi (0-90)
 
 Elaborazione di [Digital Innovation Hub Vicenza](https://digitalinnovationhubvicenza.it/) su dati del Ministero dell'Ambiente e della Tutela del Territorio e del Mare - [Geoportale nazionale (MATTM)](http://www.pcn.minambiente.it/mattm/). Questo dataset è distribuito con *Licenza Creative Commons Attribuzione - Condividi allo stesso modo 3.0 Italia*. Chiunque desideri riprodurre o pubblicare elaborati contenenti il dataset ha l'obbligo di rispettare i vincoli previsti dalla licenza.
