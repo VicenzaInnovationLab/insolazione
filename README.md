@@ -4,7 +4,7 @@ La radiazione solare entrante (insolazione) ricevuta dal sole è la principale f
 
 > Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
 
-![license logo](docs/logos.png)
+![logo of participants](docs/logos.png)
 
 La Web App è basata sulla stima della quantità totale d'insolazione entrante (diretta e diffusa) calcolata per ogni punto del modello di superficie digitale (DSM) ad alta risoluzione.DSM rappresenta la topografia che è un fattore importante che determina la variabilità spaziale dell'insolazione. La variazione di elevazione, orientamento (pendenza e aspetto) e ombre proiettate da elementi topografici influiscono sulla quantità d'insolazione ricevuta in luoghi diversi. Questa variabilità cambia anche con l'ora del giorno e il periodo dell'anno e a sua volta contribuisce alla variabilità del microclima inclusi fattori come i regimi di temperatura dell'aria e del suolo, l'evapotraspirazione, i modelli di scioglimento della neve, l'umidità del suolo e la luce disponibile per la fotosintesi.
 
