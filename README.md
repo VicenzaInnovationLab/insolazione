@@ -116,21 +116,21 @@ La mappa interattiva è fatta con
 Quando si avvia lo script `processing/data_update.py`, esegui i seguenti passi. E' meglio lanciarlo con l'intefaccia Command Line del tuo OS - assicurati che utilizzi l'ambiente Python corretto con tutte librerie necessarie installate:
 
 1. Interroga il Geoportale Regionale per [scaricare gli edifici](https://idt2.regione.veneto.it/geoportal/catalog/search/resource/details.page?uuid=r_veneto:edifici_veneto) sul territorio di Creazzo, Altavilla Vicentina, Sovizzo e Torri di Quartesolo. Il file scaricato viene salvato con un marcatempo unico come `processing/download/edifici_reg_20210325-174310.json`.
-2. Fonde gli edifici dal SIT VI (comuni_provincia_vi_7795.zip) e il Geoportale regionale al fine di creare uno livello vettoriale uniforme, trasformando i loro attributi. Il risultato viene salvato come `processing/output/edifici_uniti.json`
-3. Filtra il raster dell'insolazione sulla base di seguenti parametri che possano essere cambiati nel file `processing/config.py`. Abbiamo predefinito questi valori consigliati usando le informazioni dal sviluppatore di ArcGIS - [Estimate solar power potential](https://learn.arcgis.com/en/projects/estimate-solar-power-potential/). Sono rimasti solo le superficie con l'insolazione maggiore o uguale a 800 kW\*h/m<sup>2</sup> annui, privi dell'esposizione nord e nord-est, aventi la pendenza minore o uguale a 45°.
-4. Calcolo delle statistiche è stato effettuato solo per edifici che hanno la superficie utilizzabile per la produzione dell'energia maggiore o uguale a 30 m<sup>2</sup>. Quindi altri edifici irrilevanti sono stati rimossi per ottimizzare la visualizzazione del dataset. È stata calcolata la quantità totale di radiazione solare ricevuta ogni anno dall'area utilizzabile di ciascun edificio. Per evitare che i numeri diventino troppo grandi, sono convertiti da **kilo**watt-ora per metro quadrato a **mega**watt-ora per metro quadrato. Dopo abbiamo convertito la radiazione solare in energia producibile, usando i valori del 15% di **efficienza del modulo fotovoltaico** e dell'86% del **Performance Efficiency**. Questi valori, consigliati dalla [United States Environmental Protection Agency](https://www.epa.gov/greenpower/green-power-equivalency-calculator-calculations-and-references), indicano che i pannelli solari sono in grado di convertire il 15 percento dell'energia solare in entrata in elettricità e l'86 percento di tale elettricità viene mantenuta nell'installazione. I parametri sono regolabili nel `processing/config.py`.
+2. Unisci gli edifici dal SIT VI (comuni_provincia_vi_7795.zip) e il Geoportale Regionale al fine di creare un dataset vettoriale uniforme, trasformando i loro attributi. Il risultato viene salvato come `processing/output/edifici_uniti.json`
+3. Filtra il raster dell'insolazione sulla base dei seguenti parametri che possano essere cambiati nel file `processing/config.py`. Abbiamo predefinito questi valori consigliati usando le informazioni dallo sviluppatore di ArcGIS - [Estimate solar power potential](https://learn.arcgis.com/en/projects/estimate-solar-power-potential/). Sono rimasti solo le superfici con l'insolazione maggiore o uguale a 800 kW\*h/m<sup>2</sup> annui, privi dell'esposizione nord e nord-est, aventi la pendenza minore o uguale a 45°.
+4. Il calcolo delle statistiche è stato effettuato solo per edifici che hanno la superficie utilizzabile per la produzione dell'energia maggiore o uguale a 30 m<sup>2</sup>. Quindi altri edifici irrilevanti sono stati rimossi per ottimizzare la visualizzazione del dataset. È stata calcolata la quantità totale di radiazione solare ricevuta ogni anno dall'area utilizzabile di ciascun edificio. Per evitare che i numeri diventino troppo grandi, sono convertiti da **kilo**watt-ora per metro quadrato a **mega**watt-ora per metro quadrato. Dopo abbiamo convertito la radiazione solare in energia producibile, usando i valori del 15% di **efficienza del modulo fotovoltaico** e dell'86% del **Performance Efficiency**. Questi valori, consigliati dalla [United States Environmental Protection Agency](https://www.epa.gov/greenpower/green-power-equivalency-calculator-calculations-and-references), indicano che i pannelli solari sono in grado di convertire il 15% dell'energia solare in entrata in elettricità e l'86% di tale elettricità viene mantenuta nell'installazione. I parametri sono regolabili nel `processing/config.py`.
 
-L'uscita di questa elaborazione viene salvato come `webmap/layers/edifici.js`. Quindi, la mappa web è stata aggiornata.
+L'uscita di questa elaborazione viene salvata come `webmap/layers/edifici.js`. Quindi, la mappa web è stata aggiornata.
 
-In caso se vuoi cambiare i parametri della elaborazione, basta riavviare lo script che sovrascriverà i file più vecchi.
+In caso se vuoi cambiare i parametri dell'elaborazione, basta riavviare lo script che sovrascriverà i file più vecchi.
 
 
 ## Problemi conosciuti
 
 - A causa della copertura limitata del dataset originale DSM ricevuto dal MATTM, la parte orientale di Torri di Quartesolo non è coperta dall'analisi. Nello screenshot di sotto: il DSM usato per il calcolo, colorato secondo l'ipsometria (verde - quota bassa, marrone - quota alta, bianco - nessu dato disponibile):
 ![copertura DSM](docs/copertura-dsm.png)
-- Su dispositivi mobili la mappa non risponde a touch - quindi no si può interrogare gli attributi degli edifici.
-- La finestra "About" appare due volte quando chiamata su dispositivi mobili.
+- Su dispositivi mobili la mappa non risponde a touch - quindi non si può interrogare gli attributi degli edifici.
+- Per gli edifici con l'anno di costruzione superiore al 2016 i valori dell'insolazione calcolati non sono validi, perché il DSM fa riferimento solo a quell'anno.
 
 ## Credits
 
@@ -152,8 +152,8 @@ Rispetto alla IODL 1.0, la Italian Open Data Licence 2.0 non prevede l’obbligo
 
 Vedi il file [LICENSE.md](LICENSE.md) per dettagli.
 
-### Dati sull'insolazione e terreno
-Questi file devi scaricare manualmente - vedi la sezione [Installazione - Aggiustamenti manuali](#aggiustamenti-manuali).
+### Dati sull'insolazione e sul terreno
+Devi scaricare manualmente questi file - vedi la sezione [Installazione - Aggiustamenti manuali](#aggiustamenti-manuali).
 
 - `data/esposizione.tif` - esposizione dal DSM, in gradi (0-360, valore -9999 per aree piatte)
 - `data/insolazione.tif` - raster dell'insolazione (kWh/m<sup>2</sup>) (valore NoData -9999)
