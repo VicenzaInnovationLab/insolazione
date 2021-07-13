@@ -72,7 +72,7 @@ Dopo aver sistemato l'ambiente Python dobbiamo ancora preparare alcuni dataset.
     
 2. Assicurati che c'è anche l'archivio `data/comuni_provincia_vi_7795.zip` che contiene i limiti amministrativi della provincia.
 
-3. Controlla le impostazioni nel `processing/config.py`: serve specificare i percorsi corretti nella sezione *RASTER* per appuntare a file `esposizione.tif`, `insolazione.tif`, `pendenza.tif`. Siccome ogni file è pesante (circa 1,3 GB) devi scaricarli separatamente da questa [cartella Google condivisa](https://drive.google.com/drive/folders/1_63OgU8CTWWDSU56AkYgrcsMiDs4O-FI?usp=sharing).
+3. Controlla le impostazioni nel `processing/config.py`: serve specificare i percorsi corretti nella sezione *RASTER* per appuntare a file `esposizione.tif`, `insolazione.tif`, `pendenza.tif`. Siccome ogni file è pesante (circa 600 MB) devi scaricarli separatamente da questa [cartella Google condivisa](https://drive.google.com/drive/folders/1_63OgU8CTWWDSU56AkYgrcsMiDs4O-FI?usp=sharing).
 
 ## Informazioni sulla stima dell'insolazione
 
@@ -114,7 +114,7 @@ La mappa interattiva è fatta con ~~[OpenLayers](https://openlayers.org/)~~ [Lea
 
 Quando uno avvia lo script `processing/data_update.py` (è meglio lanciarlo con l'intefaccia Command Line del tuo OS - assicurati che utilizzi l'ambiente Python corretto con tutte librerie necessarie installate), esegue i seguenti passi:
 
-1. Interroga il Geoportale Regionale per scaricare gli edifici](https://idt2.regione.veneto.it/geoportal/catalog/search/resource/details.page?uuid=r_veneto:edifici_veneto)sul territorio di Creazzo, Altavilla Vicentina, Sovizzo e Torri di Quartesolo. Il file scaricato viene salvato con un marcatempo unico come `processing/download/edifici_reg_20210325-174310.json`.
+1. Interroga il Geoportale Regionale per scaricare [gli edifici](https://idt2.regione.veneto.it/geoportal/catalog/search/resource/details.page?uuid=r_veneto:edifici_veneto) sul territorio di Creazzo, Altavilla Vicentina, Sovizzo e Torri di Quartesolo. Il file scaricato viene salvato con un marcatempo unico come `processing/download/edifici_reg_20210325-174310.json`. ATTENZIONE: il nome del layer nel Geoportale si cambia periodicamente - aggiungono un suffisso come, ad es., `edifici_veneto_apr2021`. Imposta il nome corretto nella variabile `EDIFLAYER` del `config.py`.
 2. Fonde gli edifici dal SIT VI (comuni_provincia_vi_7795.zip) e il Geoportale regionale al fine di creare uno livello vettoriale uniforme, trasformando i loro attributi. Il risultato viene salvato come `processing/output/edifici_uniti.json`
 3. Filtra il raster dell'insolazione sulla base di seguenti parametri che possano essere cambiati nel file `processing/config.py`. Abbiamo predefinito questi valori consigliati usando le informazioni dal sviluppatore di ArcGIS - [Estimate solar power potential](https://learn.arcgis.com/en/projects/estimate-solar-power-potential/). Sono rimasti solo le superficie con l'insolazione maggiore o uguale a 800 kW\*h/m<sup>2</sup> annui, privi dell'esposizione nord e nord-est, aventi la pendenza minore o uguale a 45°.
 4. Calcolo delle statistiche è stato effettuato solo per edifici che hanno la superficie utilizzabile per la produzione dell'energia maggiore o uguale a 30 m<sup>2</sup>. Quindi altri edifici irrilevanti sono stati rimossi per ottimizzare la visualizzazione del dataset. È stata calcolata la quantità totale di radiazione solare ricevuta ogni anno dall'area utilizzabile di ciascun edificio. Per evitare che i numeri diventino troppo grandi, sono convertiti da **kilo**watt-ora per metro quadrato a **mega**watt-ora per metro quadrato. Dopo abbiamo convertito la radiazione solare in energia producibile, usando i valori del 15% di **efficienza del modulo fotovoltaico** e dell'86% del **Performance Efficiency**. Questi valori, consigliati dalla [United States Environmental Protection Agency](https://www.epa.gov/greenpower/green-power-equivalency-calculator-calculations-and-references), indicano che i pannelli solari sono in grado di convertire il 15 percento dell'energia solare in entrata in elettricità e l'86 percento di tale elettricità viene mantenuta nell'installazione. I parametri sono regolabili nel `processing/config.py`.
@@ -126,8 +126,8 @@ In caso se vuoi cambiare i parametri della elaborazione, basta riavviare lo scri
 
 ## Problemi conosciuti
 
-- A causa della copertura limitata del dataset originale DSM ricevuto dal MATTM, la parte orientale di Torri di Quartesolo non è coperta dall'analisi. Nello screenshot di sotto: il DSM usato per il calcolo, colorato secondo l'ipsometria (verde - quota bassa, marrone - quota alta, bianco - nessu dato disponibile):
-![copertura DSM](docs/copertura-dsm.png)
+- A causa della copertura limitata del dataset originale DSM ricevuto dal MATTM, la parte orientale di Torri di Quartesolo non è coperta dall'analisi. Nello screenshot di sotto: il DSM usato per il calcolo, colorato a tinte ipsometriche (verde - quota bassa, marrone - quota alta, bianco - nessun dato disponibile).:
+![copertura DSM](docs/copertura-dsm.png) L'insolazione per gli edifici nella zona NoData vengono calcolati secondo la formula empirica: *Franz, Lorena, Paolo Giandon, Ialina Vinci, Andrea Dalla Rosa, Adriano Garlato, Matteo Pisanu, and Yaroslav Vasyunin. 2021. “Fotovoltaico: C’è Un’alternativa Al Consumo Di Suolo (ARPAV e Digital Innovation Hub).” In Consumo Di Suolo, Dinamiche Territoriali e Servizi Ecosistemici. Edizione 2021. Report SNPA 22/21, edited by Michele Munafò, 282–286. SNPA*
 - Su dispositivi mobili la mappa non risponde a touch - quindi no si può interrogare gli attributi degli edifici.
 - La finestra "About" appare due volte quando chiamata su dispositivi mobili.
 
