@@ -14,7 +14,7 @@ La Web App è basata sulla stima della quantità totale d'insolazione entrante (
 
 ## Indice
 
-1. [Struttura del repositorio](#struttura-del-repositorio)
+1. [Struttura del repository](#struttura-del-repository)
 2. [Informazioni sulla stima dell'insolazione](#informazioni-sulla-stima-dell'insolazione)
 3. [Installazione](#installazione)
 4. [Esempi](#esempi)
@@ -22,7 +22,7 @@ La Web App è basata sulla stima della quantità totale d'insolazione entrante (
 6. [Credits](#credits)
 7. [Licenza](#licenza)
 
-## Struttura del repositorio
+## Struttura del repository
 
  Visto che la mappa dipende dalle informazioni sugli edifici, che è dinamica, il repositorio prevede anche lo script di aggiornamento.
 
