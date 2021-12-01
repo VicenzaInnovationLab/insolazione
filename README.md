@@ -1,31 +1,29 @@
-# Generazione di elettricità da fotovoltaico su tetti di Vicenza e i comuni contermini
+<p align="center"><img src="docs/logo_innovationlab.png" alt="Logo dell'Innovation Lab Vicenza" width="400"></p>
+<h1 align="center">Generazione di elettricità da fotovoltaico<br>su tetti di Vicenza e i comuni contermini</h1>
+<p align="right">a cura del <a href="https://digitalinnovationhubvicenza.it/">Digital Innovation Hub Vicenza</a></p>
 
-![Vicenza Innovation Lab logo](docs/logo_innovationlab.png)
+<p align="justify">La radiazione solare entrante (insolazione) ricevuta dal sole è la principale fonte di energia che guida molti dei processi fisici e biologici della terra. Questa mappa interattiva dimostra quanta energia elettrica può essere prodotta in un anno dagli edifici a <b>Vicenza</b>, <b>Altavilla Vicentina</b>, <b>Creazzo</b>, <b>Sovizzo</b> e <b>Torri di Quartesolo</b>, se i pannelli solari sono installati su loro tetti.</p>
 
-La radiazione solare entrante (insolazione) ricevuta dal sole è la principale fonte di energia che guida molti dei processi fisici e biologici della terra. Questa mappa interattiva dimostra quanta energia elettrica può essere prodotta dagli edifici a **Vicenza**, **Altavilla Vicentina**, **Creazzo**, **Sovizzo** e **Torri di Quartesolo (VI)** in un anno, se i pannelli solari sono installati su loro tetti. [Link alla Web App](https://www.comune.vicenza.it/uffici/cms/inlab/insolazione/webmap/map.html)
+[<p align="center"><img  src="docs/webapp-button-blue.png" alt="open web app button" width="200"></p>](https://www.comune.vicenza.it/uffici/cms/inlab/insolazione/webmap/map.html)
 
-> Il progetto è parte del Programma Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
+<p align="center"><img  src="docs/app-screenshot.png" alt="app screenshot" width="600"></p>
 
-![license logo](docs/logos.png)
-
-La Web App è basata sulla stima della quantità totale d'insolazione entrante (diretta e diffusa) calcolata per ogni punto del modello di superficie digitale (DSM) ad alta risoluzione.DSM rappresenta la topografia che è un fattore importante che determina la variabilità spaziale dell'insolazione. La variazione di elevazione, orientamento (pendenza e aspetto) e ombre proiettate da elementi topografici influiscono sulla quantità d'insolazione ricevuta in luoghi diversi. Questa variabilità cambia anche con l'ora del giorno e il periodo dell'anno e a sua volta contribuisce alla variabilità del microclima inclusi fattori come i regimi di temperatura dell'aria e del suolo, l'evapotraspirazione, i modelli di scioglimento della neve, l'umidità del suolo e la luce disponibile per la fotosintesi.
-
-![app screenshot](docs/app-screenshot.png)
+<p align="center"><i>Il progetto è parte del Programma Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."</i></p>
+<p align="center"><img src="docs/logos.png" alt="logo of participants" width="700"></p>
 
 ## Indice
 
 1. [Struttura del repository](#struttura-del-repository)
-2. [Informazioni sulla stima dell'insolazione](#informazioni-sulla-stima-dell'insolazione)
+2. [Informazioni sulla stima dell'insolazione](#informazioni-sulla-stima-dellinsolazione)
 3. [Installazione](#installazione)
 4. [Esempi](#esempi)
 5. [Problemi conosciuti](#problemi-conosciuti)
-6. [Credits](#credits)
-7. [Licenza](#licenza)
+6. [Licenza](#licenza)
+7. [Contatti](#contatti)
 
 ## Struttura del repository
 
  Visto che la mappa dipende dalle informazioni sugli edifici, che è dinamica, il repositorio prevede anche lo script di aggiornamento.
-
 
     - data  # contiene i dati raster e vettoriali usati nell'aggiornamento della web app
       - download
@@ -125,18 +123,12 @@ L'uscita di questa elaborazione viene salvato come `webmap/layers/edifici.js`. Q
 
 In caso se vuoi cambiare i parametri della elaborazione, basta riavviare lo script che sovrascriverà i file più vecchi.
 
-
 ## Problemi conosciuti
 
 - A causa della copertura limitata del dataset originale DSM ricevuto dal MATTM, la parte orientale di Torri di Quartesolo non è coperta dall'analisi. Nello screenshot di sotto: il DSM usato per il calcolo, colorato a tinte ipsometriche (verde - quota bassa, marrone - quota alta, bianco - nessun dato disponibile).:
 ![copertura DSM](docs/copertura-dsm.png) L'insolazione per gli edifici nella zona NoData vengono calcolati secondo la formula empirica: *Franz, Lorena, Paolo Giandon, Ialina Vinci, Andrea Dalla Rosa, Adriano Garlato, Matteo Pisanu, and Yaroslav Vasyunin. 2021. “Fotovoltaico: C’è Un’alternativa Al Consumo Di Suolo (ARPAV e Digital Innovation Hub).” In Consumo Di Suolo, Dinamiche Territoriali e Servizi Ecosistemici. Edizione 2021. Report SNPA 22/21, edited by Michele Munafò, 282–286. SNPA*
 - Su dispositivi mobili la mappa non risponde a touch - quindi no si può interrogare gli attributi degli edifici.
 - La finestra "About" appare due volte quando chiamata su dispositivi mobili.
-
-## Credits
-
-- Pagina ufficiale: [Innovation Lab Vicenza](https://www.comune.vicenza.it/uffici/cms/innovationlabvicenza.php)
-- Sviluppatore: <info@digitalinnovationhubvicenza.it>
 
 ## Licenza
 
@@ -162,3 +154,9 @@ Questi file devi scaricare manualmente - vedi la sezione [Installazione - Aggius
 - `data/pendenza.tif` - pendenza dal DSM, in gradi (0-90)
 
 Elaborazione di [VicenzaInnovationLab](https://www.comune.vicenza.it/uffici/cms/innovationlabvicenza.php) su dati del Ministero dell'Ambiente e della Tutela del Territorio e del Mare - [Geoportale nazionale (MATTM)](http://www.pcn.minambiente.it/mattm/). Questo dataset è distribuito con *Licenza Creative Commons Attribuzione - Condividi allo stesso modo 3.0 Italia*. Chiunque desideri riprodurre o pubblicare elaborati contenenti il dataset ha l'obbligo di rispettare i vincoli previsti dalla licenza.
+
+## Contatti
+
+- Pagina ufficiale: [Innovation Lab Vicenza](https://www.comune.vicenza.it/uffici/cms/innovationlabvicenza.php)
+- Infografica derivata dalla web app: <a href="https://www.comune.vicenza.it/utilita/documento.php/296216">Potenziale del fotovoltaico Vicenza e area urbana</a>. 
+- Sviluppatore: <info@digitalinnovationhubvicenza.it>
