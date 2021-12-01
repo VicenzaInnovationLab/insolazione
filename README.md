@@ -135,7 +135,8 @@ In caso se vuoi cambiare i parametri della elaborazione, basta riavviare lo scri
 
 ## Credits
 
-Sviluppato dal di [VicenzaInnovationLab](https://www.comune.vicenza.it/uffici/cms/innovationlabvicenza.php)
+- Pagina ufficiale: [Innovation Lab Vicenza](https://www.comune.vicenza.it/uffici/cms/innovationlabvicenza.php)
+- Sviluppatore: <info@digitalinnovationhubvicenza.it>
 
 ## Licenza
 
