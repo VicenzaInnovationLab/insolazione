@@ -44,13 +44,15 @@ var corner1 = L.latLng(45.4538, 11.3961),
 
 // MAPPA
 var map = L.map("map", {
-  center: [45.548, 11.548], // Vicenza
-  zoom: 13,
+  // center: [45.548, 11.548], // Vicenza
+  // zoom: 13,
   minZoom: 12,
   maxZoom: 18,
   maxBounds: bbox,
   layers: [dark, comuni_vi, edifici_vi]
 });
+
+map.fitBounds(comuni_vi.getBounds());
 
 var baseLayers = {
   "Basemap scuro": dark,
