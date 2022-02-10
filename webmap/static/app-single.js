@@ -171,7 +171,7 @@ info.update = function (props) {
   this._div.innerHTML = "<h4>Generazione da fotovoltaico</h4>" + (props ?
     "<b>" + Math.round(props.elett_prod_mwh) + " MW·h annui" + "</b><br />" +
     "Tipo: " + props.tipo + "<br />Comune: " + props.comune
-    : "Passa il mouse sopra un edificio");
+    : "Fai tap sopra un edificio");
 };
 
 info.addTo(map);
