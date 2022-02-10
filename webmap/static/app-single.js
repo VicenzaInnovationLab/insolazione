@@ -62,22 +62,6 @@ var overlays = {
   "Comuni": comuni_vi
 };
 
-// Geosearch
-L.Control.geocoder({
-  placeholder: "Trova indirizzo...",
-  geocoder: L.Control.Geocoder.nominatim({
-    geocodingQueryParams: {
-      countrycodes: "it",
-      "accept-language": "it",
-      viewbox: bbox.toBBoxString(),  // y1, x1, y2, x2
-      bounded: 1
-    }
-  }),
-  position: "topleft",
-  collapsed: false,
-  expand: "hover"
-}).addTo(map);
-
 L.control.watermark = function(opts) {return new L.Control.Watermark(opts);}
 map.zoomControl.setPosition("topleft");
 
