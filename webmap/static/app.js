@@ -242,7 +242,7 @@ var aboutText =
   (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla 
   \"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network 
   Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data\".</p>
-  <p><a href='https://github.com/dihvicenza/insolazione'>Più informazioni</a></p>`
+  <p><a href='https://github.com/VicenzaInnovationLab/insolazione'>Più informazioni</a></p>`
 
 
 var showAbout = function () {
