@@ -44,13 +44,12 @@ var corner1 = L.latLng(45.4538, 11.3961),
 
 // MAPPA
 var map = L.map("map", {
-  center: [45.548, 11.548],  // Vicenza
-  zoom: 13,
   minZoom: 12,
   maxZoom: 18,
-  maxBounds: bbox,
   layers: [dark, comuni_vi, edifici_vi]
 });
+
+map.fitBounds(comuni_vi.getBounds());
 
 var baseLayers = {
   "Basemap scuro": dark,
@@ -62,21 +61,6 @@ var overlays = {
   "Edifici": edifici_vi,
   "Comuni": comuni_vi
 };
-
-L.Control.Watermark = L.Control.extend({
-    onAdd: function(map) {
-        var img = L.DomUtil.create("img");
-
-        img.src = "static/images/logo-innovationlab.png";
-        img.style.width = "300px";
-
-        return img;
-    },
-
-    onRemove: function(map) {
-        // Nothing to do here
-    }
-});
 
 // Geosearch
 L.Control.geocoder({
@@ -95,8 +79,6 @@ L.Control.geocoder({
 }).addTo(map);
 
 L.control.watermark = function(opts) {return new L.Control.Watermark(opts);}
-L.control.watermark({ position: "bottomleft" }).addTo(map);
-// L.control.scale({ position: "bottomleft" }).addTo(map);
 map.zoomControl.setPosition("topleft");
 
 // STILE INTERATTIVO PER GLI EDIFICI
@@ -232,30 +214,10 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-L.control.layers(baseLayers, overlays, options = {position: "bottomright"}).addTo(map);
+// L.control.layers(baseLayers, overlays, options = {position: "bottomright"}).addTo(map);
 
-// About
-var aboutText =
-  `<p>Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale 
-  (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla 
-  \"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network 
-  Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data\".</p>
-  <p><a href='https://github.com/VicenzaInnovationLab/insolazione'>Più informazioni</a></p>`
-
-
-var showAbout = function () {
-  Swal.fire({
-    title: "InnovationLab Vicenza",
-    html: aboutText,
-    imageUrl: "static/images/logo.png",
-    imageWidth: 800,
-    imageAlt: "Logo InnovationLab Vicenza",
-    footer:
-      `<p>La web app è sviluppata dal <a href='https://digitalinnovationhubvicenza.it/'> 
-      Digital Innovation Hub</a> di Confartigianato Vicenza.</p> 
-      <p>Il favicon del sito è creato da <a href='www.freepik.com'>Freepik</a> 
-      dal www.flaticon.com.</p>`
-  });
+var goHome = function () {
+  map.fitBounds(comuni_vi.getBounds());
 }
 
-L.easyButton("fa-info", showAbout).addTo(map);
+L.easyButton("fa-home", goHome).addTo(map);
