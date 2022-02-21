@@ -6,7 +6,7 @@ var edifici_vi = L.geoJSON(edifici,
       "<a href=\"https://digitalinnovationhubvicenza.it\">Digital Innovation Hub Vicenza</a>"
   });
 
-var comuni_vi = L.geoJSON(comuni,
+var confini_vi = L.geoJSON(confini,
   {
     style: {color: "#ccc", opacity: 0.9, fillOpacity: 0.0, weight: 2},
     attribution: "Confini comunali della provincia di Vicenza &copy; " +
@@ -46,10 +46,10 @@ var corner1 = L.latLng(45.4538, 11.3961),
 var map = L.map("map", {
   minZoom: 12,
   maxZoom: 18,
-  layers: [dark, comuni_vi, edifici_vi]
+  layers: [dark, confini_vi, edifici_vi]
 });
 
-map.fitBounds(comuni_vi.getBounds());
+map.fitBounds(edifici_vi.getBounds());
 
 var baseLayers = {
   "Basemap scuro": dark,
@@ -59,7 +59,7 @@ var baseLayers = {
 
 var overlays = {
   "Edifici": edifici_vi,
-  "Comuni": comuni_vi
+  "Comuni": confini_vi
 };
 
 L.control.watermark = function(opts) {return new L.Control.Watermark(opts);}
@@ -201,7 +201,7 @@ legend.addTo(map);
 // L.control.layers(baseLayers, overlays, options = {position: "bottomright"}).addTo(map);
 
 var goHome = function () {
-  map.fitBounds(comuni_vi.getBounds());
+  map.fitBounds(confini_vi.getBounds());
 }
 
 L.easyButton("fa-home", goHome).addTo(map);

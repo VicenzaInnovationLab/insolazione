@@ -60,7 +60,7 @@ var baseLayers = {
 
 var overlays = {
   "Edifici": edifici_vi,
-  "Comuni": comuni_vi
+  "Confini": comuni_vi
 };
 
 L.Control.Watermark = L.Control.extend({
@@ -241,7 +241,6 @@ var aboutText =
   \"costituzione di Innovation Lab diretti al consolidamento/sviluppo del network 
   Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data\".</p>
   <p><a href='https://github.com/VicenzaInnovationLab/insolazione'>Più informazioni</a></p>`
-
 
 var showAbout = function () {
   Swal.fire({
