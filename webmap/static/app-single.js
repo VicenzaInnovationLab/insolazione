@@ -68,7 +68,7 @@ map.zoomControl.setPosition("topleft");
 // STILE INTERATTIVO PER GLI EDIFICI
 function stileEdifici(feature) {
   var val = feature.properties.elett_prod_mwh;
-  if (val < 50) {
+  if (val < 20) {
     return {
       color: "#000000",
       fillColor: "#fef0d9",
@@ -76,7 +76,7 @@ function stileEdifici(feature) {
       fillOpacity: 0.8,
       weight: 0.4
     };
-  } else if (50 <= val && val < 200) {
+  } else if (20 <= val && val < 200) {
     return {
       color: "#000000",
       fillColor: "#fdcc8a",
@@ -112,8 +112,8 @@ function stileEdifici(feature) {
 }
 
 function getColor(val) {
-  return (val < 50) ? '#fef0d9' :
-    (50 <= val && val < 200) ? '#fdcc8a' :
+  return (val < 20) ? '#fef0d9' :
+    (20 <= val && val < 200) ? '#fdcc8a' :
       (200 <= val && val < 800) ? '#fc8d59' :
         (800 <= val && val < 3200) ? '#e34a33' :
           (3200 <= val) ? '#b30000' :
@@ -182,7 +182,7 @@ var legend = L.control({position: "bottomright"});
 legend.onAdd = function (map) {
 
   var div = L.DomUtil.create("div", "info legend"),
-    grades = [0, 50, 200, 800, 3200],
+    grades = [0, 20, 200, 800, 3200],
     label = [];
 
   div.innerHTML = "<h4>MW·h annui</h4>"
